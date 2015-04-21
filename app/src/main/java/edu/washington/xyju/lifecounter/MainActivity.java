@@ -1,5 +1,8 @@
 package edu.washington.xyju.lifecounter;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +15,22 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    @Override
+    public void onConfigurationChanged(Configuration config) {
+        try{
+            super.onConfigurationChanged(config);
+            if(this.getResources().getConfiguration().orientation ==
+                    Configuration.ORIENTATION_LANDSCAPE){
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            } else if(this.getResources().getConfiguration().orientation ==
+                    Configuration.ORIENTATION_PORTRAIT) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        } catch(Exception ex) {
+
+        }
+    }
 
     class Player {
         Button plus;
@@ -37,7 +56,6 @@ public class MainActivity extends ActionBarActivity {
     LinearLayout layout7;
     LinearLayout layout8;
     View.OnClickListener btnListener;
-    View.OnClickListener addListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +63,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         add = (Button)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
-            int n = 3;
+            int number = 3;
             @Override
             public void onClick(View v) {
-                switch (n) {
+                switch(number) {
                     case 3:
                         text3.setVisibility(View.VISIBLE);
                         layout3.setVisibility(View.VISIBLE);
@@ -74,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
                         layout8.setVisibility(View.VISIBLE);
                         break;
                 }
-                n++;
+                number++;
             }
         });
 
@@ -197,28 +215,44 @@ public class MainActivity extends ActionBarActivity {
                 text7.setText("Player 7 : " + count7);
                 text8.setText("Player 8 : " + count8);
 
-                if (count1 <= 0){
+                if(count1 <= 0){
+                    text1.setText("Player 1 loses!");
+                    text1.setTextColor(Color.RED);
                     text.setText("Player 1 loses!");
                 }
-                if (count2 <= 0){
+                if(count2 <= 0){
+                    text2.setText("Player 2 loses!");
+                    text2.setTextColor(Color.RED);
                     text.setText("Player 2 loses!");
                 }
-                if (count3 <= 0){
+                if(count3 <= 0){
+                    text3.setText("Player 3 loses!");
+                    text3.setTextColor(Color.RED);
                     text.setText("Player 3 loses!");
                 }
-                if (count4 <= 0){
+                if(count4 <= 0){
+                    text4.setText("Player 4 loses!");
+                    text4.setTextColor(Color.RED);
                     text.setText("Player 4 loses!");
                 }
-                if (count5 <= 0){
+                if(count5 <= 0){
+                    text5.setText("Player 5 loses!");
+                    text5.setTextColor(Color.RED);
                     text.setText("Player 5 loses!");
                 }
-                if (count6 <= 0){
+                if(count6 <= 0){
+                    text6.setText("Player 6 loses!");
+                    text6.setTextColor(Color.RED);
                     text.setText("Player 6 loses!");
                 }
-                if (count7 <= 0){
+                if(count7 <= 0){
+                    text7.setText("Player 7 loses!");
+                    text7.setTextColor(Color.RED);
                     text.setText("Player 7 loses!");
                 }
-                if (count8 <= 0){
+                if(count8 <= 0){
+                    text8.setText("Player 8 loses!");
+                    text8.setTextColor(Color.RED);
                     text.setText("Player 8 loses!");
                 }
             }
@@ -242,87 +276,86 @@ public class MainActivity extends ActionBarActivity {
         layout8 = (LinearLayout)findViewById(R.id.layout8);
 
         Player player1 = new Player();
-        player1.plus = (Button) findViewById(R.id.plus1);
-        player1.minus = (Button) findViewById(R.id.minus1);
-        player1.plusFive = (Button) findViewById(R.id.plusFive1);
-        player1.minusFive = (Button) findViewById(R.id.minusFive1);
+        player1.plus = (Button)findViewById(R.id.plus1);
+        player1.minus = (Button)findViewById(R.id.minus1);
+        player1.plusFive = (Button)findViewById(R.id.plusFive1);
+        player1.minusFive = (Button)findViewById(R.id.minusFive1);
         player1.plus.setOnClickListener(btnListener);
         player1.minus.setOnClickListener(btnListener);
         player1.plusFive.setOnClickListener(btnListener);
         player1.minusFive.setOnClickListener(btnListener);
 
         Player player2 = new Player();
-        player2.plus = (Button) findViewById(R.id.plus2);
-        player2.minus = (Button) findViewById(R.id.minus2);
-        player2.plusFive = (Button) findViewById(R.id.plusFive2);
-        player2.minusFive = (Button) findViewById(R.id.minusFive2);
+        player2.plus = (Button)findViewById(R.id.plus2);
+        player2.minus = (Button)findViewById(R.id.minus2);
+        player2.plusFive = (Button)findViewById(R.id.plusFive2);
+        player2.minusFive = (Button)findViewById(R.id.minusFive2);
         player2.plus.setOnClickListener(btnListener);
         player2.minus.setOnClickListener(btnListener);
         player2.plusFive.setOnClickListener(btnListener);
         player2.minusFive.setOnClickListener(btnListener);
 
         Player player3 = new Player();
-        player3.plus = (Button) findViewById(R.id.plus3);
-        player3.minus = (Button) findViewById(R.id.minus3);
-        player3.plusFive = (Button) findViewById(R.id.plusFive3);
-        player3.minusFive = (Button) findViewById(R.id.minusFive3);
+        player3.plus = (Button)findViewById(R.id.plus3);
+        player3.minus = (Button)findViewById(R.id.minus3);
+        player3.plusFive = (Button)findViewById(R.id.plusFive3);
+        player3.minusFive = (Button)findViewById(R.id.minusFive3);
         player3.plus.setOnClickListener(btnListener);
         player3.minus.setOnClickListener(btnListener);
         player3.plusFive.setOnClickListener(btnListener);
         player3.minusFive.setOnClickListener(btnListener);
 
         Player player4 = new Player();
-        player4.plus = (Button) findViewById(R.id.plus4);
-        player4.minus = (Button) findViewById(R.id.minus4);
-        player4.plusFive = (Button) findViewById(R.id.plusFive4);
-        player4.minusFive = (Button) findViewById(R.id.minusFive4);
+        player4.plus = (Button)findViewById(R.id.plus4);
+        player4.minus = (Button)findViewById(R.id.minus4);
+        player4.plusFive = (Button)findViewById(R.id.plusFive4);
+        player4.minusFive = (Button)findViewById(R.id.minusFive4);
         player4.plus.setOnClickListener(btnListener);
         player4.minus.setOnClickListener(btnListener);
         player4.plusFive.setOnClickListener(btnListener);
         player4.minusFive.setOnClickListener(btnListener);
 
         Player player5 = new Player();
-        player5.plus = (Button) findViewById(R.id.plus5);
-        player5.minus = (Button) findViewById(R.id.minus5);
-        player5.plusFive = (Button) findViewById(R.id.plusFive5);
-        player5.minusFive = (Button) findViewById(R.id.minusFive5);
+        player5.plus = (Button)findViewById(R.id.plus5);
+        player5.minus = (Button)findViewById(R.id.minus5);
+        player5.plusFive = (Button)findViewById(R.id.plusFive5);
+        player5.minusFive = (Button)findViewById(R.id.minusFive5);
         player5.plus.setOnClickListener(btnListener);
         player5.minus.setOnClickListener(btnListener);
         player5.plusFive.setOnClickListener(btnListener);
         player5.minusFive.setOnClickListener(btnListener);
 
         Player player6 = new Player();
-        player6.plus = (Button) findViewById(R.id.plus6);
-        player6.minus = (Button) findViewById(R.id.minus6);
-        player6.plusFive = (Button) findViewById(R.id.plusFive6);
-        player6.minusFive = (Button) findViewById(R.id.minusFive6);
+        player6.plus = (Button)findViewById(R.id.plus6);
+        player6.minus = (Button)findViewById(R.id.minus6);
+        player6.plusFive = (Button)findViewById(R.id.plusFive6);
+        player6.minusFive = (Button)findViewById(R.id.minusFive6);
         player6.plus.setOnClickListener(btnListener);
         player6.minus.setOnClickListener(btnListener);
         player6.plusFive.setOnClickListener(btnListener);
         player6.minusFive.setOnClickListener(btnListener);
 
         Player player7 = new Player();
-        player7.plus = (Button) findViewById(R.id.plus7);
-        player7.minus = (Button) findViewById(R.id.minus7);
-        player7.plusFive = (Button) findViewById(R.id.plusFive7);
-        player7.minusFive = (Button) findViewById(R.id.minusFive7);
+        player7.plus = (Button)findViewById(R.id.plus7);
+        player7.minus = (Button)findViewById(R.id.minus7);
+        player7.plusFive = (Button)findViewById(R.id.plusFive7);
+        player7.minusFive = (Button)findViewById(R.id.minusFive7);
         player7.plus.setOnClickListener(btnListener);
         player7.minus.setOnClickListener(btnListener);
         player7.plusFive.setOnClickListener(btnListener);
         player7.minusFive.setOnClickListener(btnListener);
 
         Player player8 = new Player();
-        player8.plus = (Button) findViewById(R.id.plus8);
-        player8.minus = (Button) findViewById(R.id.minus8);
-        player8.plusFive = (Button) findViewById(R.id.plusFive8);
-        player8.minusFive = (Button) findViewById(R.id.minusFive8);
+        player8.plus = (Button)findViewById(R.id.plus8);
+        player8.minus = (Button)findViewById(R.id.minus8);
+        player8.plusFive = (Button)findViewById(R.id.plusFive8);
+        player8.minusFive = (Button)findViewById(R.id.minusFive8);
         player8.plus.setOnClickListener(btnListener);
         player8.minus.setOnClickListener(btnListener);
         player8.plusFive.setOnClickListener(btnListener);
         player8.minusFive.setOnClickListener(btnListener);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
